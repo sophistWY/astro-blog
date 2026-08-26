@@ -82,3 +82,5 @@
  .home-latest-row > div { grid-column:2; }
  .latest-index { grid-row:1 / span 2; }
 }
+
+.article-content embed { display:block; width:100%; min-height:520px; margin:28px 0; border:1px solid var(--line); background:var(--surface); }

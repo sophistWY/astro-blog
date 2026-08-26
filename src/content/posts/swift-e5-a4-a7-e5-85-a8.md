@@ -1,6 +1,6 @@
 ---
 title: "Swift大全"
-description: "这是一套swift相关的资料. 阅读全文 »"
+description: "这是一套swift相关的资料."
 pubDate: 2019-07-30
 category: "技术"
 tags: ["博客"]
@@ -641,7 +641,4 @@ tags: ["博客"]
 <li><a href="https://github.com/numbbbbb/the-swift-programming-language-in-chinese" target="_blank" rel="noopener">the-swift-programming-language-in-chinese</a> 非常赞 中文版 Apple 官方 Swift 教程《The Swift Programming Language》</li>
 <li><a href="https://github.com/Lax/iOS-Swift-Demos" target="_blank" rel="noopener">iOS-Swift-Demos</a> 精心收集并分类整理的Swift开发学习资源，包括Apple官方提供的示例代码和文档，以及github上的项目和国内外开发者的技术博客。欢迎提交pull-request一起维护。[iOS Swift Demos from Apple] <a href="http://blog.liulantao.com/SwiftBeginnersGuide/" target="_blank" rel="noopener">http://blog.liulantao.com/SwiftBeginnersGuide/</a></li>
 </ul>
-<h4 id="框架图"><a href="#框架图" class="headerlink" title="框架图"></a>框架图</h4><p><img src="/legacy-assets/7887d1d95b-OpenSourceforSwift-Classification.pdf" alt="Swift开源项目精选"></p>
-
-
-    </div>
+<h4 id="框架图"><a href="#框架图" class="headerlink" title="框架图"></a>框架图</h4><p><embed src="/legacy-assets/OpenSourceforSwift-Classification.pdf" width="100%" height="550" type="application/pdf"></p>
