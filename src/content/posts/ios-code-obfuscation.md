@@ -4,6 +4,7 @@ description: "一份从目标、工具到发布检查的 iOS 代码混淆实践�
 pubDate: 2023-04-01
 category: "iOS"
 tags: [iOS, 工程实践]
+highlight: true
 ---
 
 代码混淆的目标不是让项目变得不可维护，而是提高逆向分析的成本，同时保持构建、调试和发布流程可控。

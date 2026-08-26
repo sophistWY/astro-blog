@@ -10,46 +10,17 @@ const categories = [...new Set(posts.map((post) => post.data.category))];
 const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
 ---
 <BaseLayout>
-	<section class="hero shell">
-		<div class="hero-copy">
-			<p class="eyebrow">Independent developer · Shanghai</p>
-			<h1>把复杂的技术，<br /><em>写成清晰的答案。</em></h1>
-			<p class="hero-intro">我是汪洋，一名 iOS / Flutter 开发者，也在持续探索 AI、工具和产品思维。这里记录实践、复盘与还没想明白的问题。</p>
-			<div class="hero-actions">
-				<a class="button button-primary" href="/archive/">浏览文章 <span>→</span></a>
-				<a class="button button-ghost" href="/about/">认识我</a>
-			</div>
-		</div>
-		<div class="hero-aside">
-			<div class="orb"></div>
-			<div class="hero-note"><span>NOW</span><strong>Building with AI</strong><small>记录正在发生的事</small></div>
+	<section class="home-hero shell">
+		<div class="home-hero-top"><p class="eyebrow">Notes from a curious developer</p><span class="home-year">EST. 2016 — {new Date().getFullYear()}</span></div>
+		<div class="home-hero-grid">
+			<div class="home-title"><h1>把复杂的技术，<br /><span>写成清晰的答案。</span></h1><p>我是汪洋，一名 iOS / Flutter 开发者，也在持续探索 AI、工具和产品思维。这里记录实践、复盘与还没想明白的问题。</p><div class="hero-actions"><a class="button button-primary" href="/archive/">浏览文章 <span>↗</span></a><a class="button button-ghost" href="/about/">关于我</a></div></div>
+			<div class="home-manifesto"><div class="manifesto-stamp">WY<br /><small>journal</small></div><p>“保持好奇，<br />保持清醒，<br />保持输出。”</p><div class="manifesto-rule"></div><span>iOS · Flutter · AI</span></div>
 		</div>
 	</section>
 
-	<section class="shell stats-row" aria-label="博客统计">
-		<div><strong>{posts.length.toString().padStart(2, '0')}</strong><span>篇文章</span></div>
-		<div><strong>{categories.length.toString().padStart(2, '0')}</strong><span>个方向</span></div>
-		<div><strong>∞</strong><span>持续记录</span></div>
-	</section>
+	<section class="shell home-stats" aria-label="博客统计"><div><strong>{posts.length.toString().padStart(2, '0')}</strong><span>篇文章</span></div><div><strong>{categories.length.toString().padStart(2, '0')}</strong><span>个主题</span></div><div><strong>10</strong><span>年记录</span></div><a href="/about/">了解这个博客 <span>↗</span></a></section>
 
-	{featured.length > 0 && <section class="shell section-block">
-		<div class="section-heading"><div><p class="eyebrow">Selected notes</p><h2>精选文章</h2></div><a href="/archive/">查看全部 →</a></div>
-		<div class="featured-grid">
-			{featured.map((post, index) => <a class={`featured-card card-tone-${index + 1}`} href={`/posts/${post.id}/`}>
-				<span class="card-index">0{index + 1}</span><span class="card-category">{post.data.category}</span>
-				<h3>{post.data.title}</h3><p>{post.data.description}</p><span class="card-arrow">↗</span>
-			</a>)}
-		</div>
-	</section>}
+	{featured.length > 0 && <section class="shell home-featured"><div class="home-section-head"><div><p class="eyebrow">Editor&apos;s picks</p><h2>值得先读</h2></div><a href="/archive/">全部文章 <span>↗</span></a></div><div class="home-featured-grid"><a class="home-featured-main" href={`/posts/${featured[0].id}/`}><div class="feature-kicker"><span>01</span><span>{featured[0].data.category}</span></div><h3>{featured[0].data.title}</h3><p>{featured[0].data.description}</p><span class="feature-link">开始阅读 <b>↗</b></span></a><div class="home-featured-side">{featured.slice(1).map((post, index) => <a href={`/posts/${post.id}/`} class="home-small-feature"><span class="small-number">0{index + 2}</span><div><span class="small-category">{post.data.category}</span><h3>{post.data.title}</h3><p>{post.data.description}</p></div><span class="small-arrow">↗</span></a>)}</div></div></section>}
 
-	<section class="shell section-block latest-block">
-		<div class="section-heading"><div><p class="eyebrow">Latest writing</p><h2>最近更新</h2></div><a href="/archive/">按时间浏览 →</a></div>
-		<div class="post-list">
-			{latest.map((post) => <article class="post-row">
-				<div class="post-date">{formatDate(post.data.pubDate)}</div>
-				<div class="post-main"><div class="post-meta"><span>{post.data.category}</span>{post.data.tags.slice(0, 2).map((tag) => <span>#{tag}</span>)}</div><h3><a href={`/posts/${post.id}/`}>{post.data.title}</a></h3><p>{post.data.description}</p></div>
-				<a class="row-arrow" href={`/posts/${post.id}/`} aria-label={`阅读 ${post.data.title}`}>↗</a>
-			</article>)}
-		</div>
-	</section>
+	<section class="shell home-latest"><div class="home-section-head"><div><p class="eyebrow">Fresh from the notebook</p><h2>最近更新</h2></div><a href="/archive/">按时间浏览 <span>↗</span></a></div><div class="home-latest-list">{latest.map((post, index) => <a href={`/posts/${post.id}/`} class="home-latest-row"><span class="latest-index">{String(index + 1).padStart(2, '0')}</span><time>{formatDate(post.data.pubDate)}</time><div><span class="latest-category">{post.data.category}</span><h3>{post.data.title}</h3><p>{post.data.description}</p></div><span class="latest-arrow">↗</span></a>)}</div></section>
 </BaseLayout>

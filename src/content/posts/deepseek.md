@@ -4,6 +4,7 @@ description: "从模型使用开始，建立一套适合自己的 AI 学习路�
 pubDate: 2025-02-10
 category: "AI"
 tags: ["DeepSeek"]
+highlight: true
 ---
 
 学习一个新的 AI 工具，最有效的方式不是记住所有参数，而是从一个真实问题开始。

@@ -4,6 +4,7 @@ description: "从模型能力到真实工作流，记录我对生成式 AI 的�
 pubDate: 2025-02-10
 category: "AI"
 tags: [AI, Generative AI]
+highlight: true
 ---
 
 生成式 AI 正在从“聊天工具”变成新的工作方式。它不只是帮我们生成文字，也开始参与检索、规划、编程和内容创作。
