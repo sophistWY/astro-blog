@@ -1,16 +1,21 @@
 ---
 title: "《DeepSeek：从入门到精通》"
-description: "从模型使用开始，建立一套适合自己的 AI 学习路径。"
+description: "《DeepSeek：从入门到精通》"
 pubDate: 2025-02-10
 category: "AI"
 tags: ["DeepSeek"]
 highlight: true
 ---
+<h3 id="《DeepSeek：从入门到精通》"><a href="#《DeepSeek：从入门到精通》" class="headerlink" title="《DeepSeek：从入门到精通》"></a><strong>《DeepSeek：从入门到精通》</strong></h3>
 
-学习一个新的 AI 工具，最有效的方式不是记住所有参数，而是从一个真实问题开始。
 
-## 从一个工作流开始
+	<div class="row">
+    <embed src="/legacy-assets/deepseek.pdf" width="100%" height="550" type="application/pdf">
+	</div>
 
-选择一个重复出现、结果容易验证的问题，把模型放进流程中，观察它在哪些环节真正节省了时间。
 
-当你能够描述输入、输出和验收标准时，模型才会从“新鲜玩具”变成稳定工具。
+
+<h4 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a><a href="/legacy-assets/deepseek.pdf">下载地址</a></h4><p>#### </p>
+
+      
+    </div>
