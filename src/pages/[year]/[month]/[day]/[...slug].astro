@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import legacyMap from '../../../../data/legacy-map.json';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('posts', ({ data }) => !data.draft);
+	const byId = new Map(posts.map((post) => [post.id, post]));
+	return legacyMap.map((entry) => ({
+		params: { year: entry.year, month: entry.month, day: entry.day, slug: entry.slug },
+		props: { post: byId.get(entry.id) },
+	})).filter((entry) => entry.props.post);
+}
+
+const { post } = Astro.props;
+---
+<BaseLayout title={`${post.data.title} · 汪洋的博客`} description={post.data.description}>
+	<article class="shell legacy-notice"><p class="eyebrow">Legacy URL</p><h1>{post.data.title}</h1><p>这篇文章已迁移到新版博客，页面地址保持兼容。</p><a class="button button-primary" href={`/posts/${post.id}/`}>阅读新版文章 →</a></article>
+</BaseLayout>

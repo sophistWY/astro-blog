@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const featured = posts.filter((post) => post.data.highlight).slice(0, 3);
+const latest = posts.slice(0, 6);
+const categories = [...new Set(posts.map((post) => post.data.category))];
+const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+<BaseLayout>
+	<section class="hero shell">
+		<div class="hero-copy">
+			<p class="eyebrow">Independent developer · Shanghai</p>
+			<h1>把复杂的技术，<br /><em>写成清晰的答案。</em></h1>
+			<p class="hero-intro">我是汪洋，一名 iOS / Flutter 开发者，也在持续探索 AI、工具和产品思维。这里记录实践、复盘与还没想明白的问题。</p>
+			<div class="hero-actions">
+				<a class="button button-primary" href="/archive/">浏览文章 <span>→</span></a>
+				<a class="button button-ghost" href="/about/">认识我</a>
+			</div>
+		</div>
+		<div class="hero-aside">
+			<div class="orb"></div>
+			<div class="hero-note"><span>NOW</span><strong>Building with AI</strong><small>记录正在发生的事</small></div>
+		</div>
+	</section>
+
+	<section class="shell stats-row" aria-label="博客统计">
+		<div><strong>{posts.length.toString().padStart(2, '0')}</strong><span>篇文章</span></div>
+		<div><strong>{categories.length.toString().padStart(2, '0')}</strong><span>个方向</span></div>
+		<div><strong>∞</strong><span>持续记录</span></div>
+	</section>
+
+	{featured.length > 0 && <section class="shell section-block">
+		<div class="section-heading"><div><p class="eyebrow">Selected notes</p><h2>精选文章</h2></div><a href="/archive/">查看全部 →</a></div>
+		<div class="featured-grid">
+			{featured.map((post, index) => <a class={`featured-card card-tone-${index + 1}`} href={`/posts/${post.id}/`}>
+				<span class="card-index">0{index + 1}</span><span class="card-category">{post.data.category}</span>
+				<h3>{post.data.title}</h3><p>{post.data.description}</p><span class="card-arrow">↗</span>
+			</a>)}
+		</div>
+	</section>}
+
+	<section class="shell section-block latest-block">
+		<div class="section-heading"><div><p class="eyebrow">Latest writing</p><h2>最近更新</h2></div><a href="/archive/">按时间浏览 →</a></div>
+		<div class="post-list">
+			{latest.map((post) => <article class="post-row">
+				<div class="post-date">{formatDate(post.data.pubDate)}</div>
+				<div class="post-main"><div class="post-meta"><span>{post.data.category}</span>{post.data.tags.slice(0, 2).map((tag) => <span>#{tag}</span>)}</div><h3><a href={`/posts/${post.id}/`}>{post.data.title}</a></h3><p>{post.data.description}</p></div>
+				<a class="row-arrow" href={`/posts/${post.id}/`} aria-label={`阅读 ${post.data.title}`}>↗</a>
+			</article>)}
+		</div>
+	</section>
+</BaseLayout>

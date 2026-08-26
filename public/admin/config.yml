@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: sophistWY/astro-blog
+  branch: main
+media_folder: public/uploads
+public_folder: /uploads
+collections:
+  - name: posts
+    label: 文章
+    folder: src/content/posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 描述, name: description, widget: text, required: false }
+      - { label: 发布日期, name: pubDate, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+      - { label: 分类, name: category, widget: string, default: 随笔 }
+      - { label: 标签, name: tags, widget: list, required: false }
+      - { label: 正文, name: body, widget: markdown }
