@@ -7,7 +7,13 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
 const featured = posts.filter((post) => post.data.highlight).slice(0, 3);
 const latest = posts.slice(0, 6);
 const categories = [...new Set(posts.map((post) => post.data.category))];
-const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
+const formatDate = (date: Date) => {
+	const options = { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'Asia/Shanghai' } as const;
+	const dateText = date.toLocaleDateString('zh-CN', options);
+	return date.getHours() || date.getMinutes() || date.getSeconds()
+		? `${dateText} ${date.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Shanghai' })}`
+		: dateText;
+};
 ---
 <BaseLayout>
 	<section class="home-hero shell">

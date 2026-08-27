@@ -2,7 +2,13 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' });
+const formatDate = (date: Date) => {
+	const options = { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'Asia/Shanghai' } as const;
+	const dateText = date.toLocaleDateString('zh-CN', options);
+	return date.getHours() || date.getMinutes() || date.getSeconds()
+		? `${dateText} ${date.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Shanghai' })}`
+		: dateText;
+};
 ---
 <BaseLayout title="文章归档 · 汪洋的博客">
 	<section class="shell archive-page"><p class="eyebrow">All writing</p><h1>文章归档</h1><p class="archive-intro">一些技术实践，一些生活观察，按时间慢慢整理。</p><div class="archive-list">{posts.map((post) => <a class="archive-row" href={`/posts/${post.id}/`}><time>{formatDate(post.data.pubDate)}</time><span>{post.data.title}</span><small>{post.data.category} ↗</small></a>)}</div></section>

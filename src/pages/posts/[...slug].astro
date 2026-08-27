@@ -9,7 +9,11 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const formatDate = post.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+const dateOptions = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Shanghai' } as const;
+const dateText = post.data.pubDate.toLocaleDateString('zh-CN', dateOptions);
+const formatDate = post.data.pubDate.getHours() || post.data.pubDate.getMinutes() || post.data.pubDate.getSeconds()
+	? `${dateText} ${post.data.pubDate.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Shanghai' })}`
+	: dateText;
 ---
 <BaseLayout title={`${post.data.title} · 汪洋的博客`} description={post.data.description}>
 	<article class="shell article-page">

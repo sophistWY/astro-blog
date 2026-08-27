@@ -1,7 +1,7 @@
 ---
 title: "Cursor、Codex、Claude Code：我实际写代码时的三种手感"
 description: "不看跑分，只看真实开发流程：读仓库、改多文件、调试、跑测试和发布时，Cursor、Codex、Claude Code 分别适合什么。"
-pubDate: 2026-08-27
+pubDate: 2026-08-27T12:36:51+08:00
 category: "技术"
 tags: ["Cursor", "Codex", "Claude Code", "AI 编程", "开发效率"]
 ---

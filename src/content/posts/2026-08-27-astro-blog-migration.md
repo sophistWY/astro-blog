@@ -1,7 +1,7 @@
 ---
 title: "把个人博客迁移到 Astro：从内容整理到持续发布"
 description: "记录一次个人博客迁移到 Astro 的实践：重新整理旧文章、修复图片和 PDF、优化站点视觉，并搭建更方便的发布后台。"
-pubDate: 2026-08-27
+pubDate: 2026-08-27T10:20:23+08:00
 category: "技术"
 tags: ["Astro", "博客", "GitHub Pages", "Sveltia CMS"]
 ---
