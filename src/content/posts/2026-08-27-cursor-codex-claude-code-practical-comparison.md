@@ -217,6 +217,8 @@ Cursor、Codex 和 Claude Code 代表了三种不同的协作方式：编辑器�
 
 工具会继续变化，但这四件事不会过时。
 
+> 说明：本文由 AI Agent 协助整理发布，文中的比较和推荐基于作者的实际工作流体验。
+
 ## 参考资料
 
 - [OpenAI Codex](https://developers.openai.com/codex/)
